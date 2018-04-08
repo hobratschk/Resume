@@ -1,18 +1,19 @@
 var bio = {
   "name" : "Blake Hobratschk",
-  "role" : "JavaScript Programmer",
+  "role" : "Front-End Developer / Javascript",
   "contacts" : {
     "mobile" : "832-640-8157",
     "email" : "hobratschkbl@gmail.com",
     "location" : "Covington, LA",
     "github" : "https://github.com/hobratschk"
     },
-  "welcomeMessage" : "Thank you for viewing my profile. Obviously, please contact me if you have any interest in or questions regarding my resum&#233.",
+  "welcomeMessage" : "Thank you for viewing my resum&#233. My recent projects, which I made as part of Udacity's coursewokr, are linked below. Please call or email if you have any questions.",
   "biopic" : "images/resume-img.jpg",
   "skills" : [
     "JavaScript",
+    "Technical Support",
     "Technical Writing",
-    "Tech Support"
+    "Collaboration"
   ],
   "display" : function () {
     var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
@@ -41,30 +42,42 @@ var bio = {
 var projects = {
   "projects":[
     {
-      "title":"Project 1",
-      "dates":"2017",
-      "description":"Thorough description of project 1.",
+      "title":"Explore Dallas",
+      "dates":"2018",
+      "description":"I used Google Maps API to build a responsive and interactive app for exploring Dallas, TX. Please note, this is my current project, so I'm still building certain features.",
+      "url": "Maps.API.Project/index.html",
       "images":[
-        "images/learn-javascript.jpg"
+        "images/dallas-skyline.jpg"
       ]
     },
     {
-      "title":"Project 2",
+      "title":"Get To Da Wataa! A Frogger Imitation Game",
       "dates":"2017",
-      "description":"Thorough description of project 2.",
+      "description":"I used a canvas and learned alot about rendering for this project. I had a lot of fun building this one. Watch out for the bugs.",
+      "url": "getToTheWater/index.html",
       "images":[
-        "images/JShero.jpg"
+        "images/wataa.jpg"
+      ]
+    },
+    {
+      "title":"Simple Click Game - With Sphynxes",
+      "dates":"2017",
+      "description":"I used knockout JS to create a simple click game. Choose the name of a cat, and click the picture for more cats. This allowed me a lot of practice with functions. Silly names and sphynxes await you!",
+      "url": "knockout.cat-clicker/index.html",
+      "images":[
+        "images/sphynx_5.jpg"
       ]
     }
   ],
+
   "display": function () {
     for (index = 0; index < projects.projects.length; index++) {
       $("#projects").append(HTMLprojectStart);
-      var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[index].title);
+      var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[index].title).replace("#", projects.projects[index].url);;
       var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[index].dates);
       var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[index].description);
       $(".project-entry:last").append(formattedTitle, formattedDates, formattedDescription);
-      //nested for loop to display project images - must iterate over images because it's an index w/in each projects index - must specify index of projects.projects in loop, then specify index (represented here by i) of the images when declaring formattedImage - I have to append it within this for loop because formattedImage is not avail to the larger scope of the display function - but for some reason, it works whether I append formattedImage within the nested for loop, or if I append it with the rest of the formatted info. Either way it works. Reviewer, please help me out here and briefly explain in review, thanks! :)
+      //nested for loop to display project images - must iterate over images because it's an index w/in each projects index - must specify index of projects.projects in loop, then specify index (represented here by i) of the images when declaring formattedImage - I have to append it within this for loop because formattedImage is not avail to the larger scope of the display function - but for some reason, it works whether I append formattedImage within the nested for loop, or if I append it with the rest of the formatted info.
       for (var i = 0; i < projects.projects[index].images.length; i++) {
         var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[index].images[i]);
         $(".project-entry:last").append(formattedImage);
@@ -79,8 +92,8 @@ var work = {
       "employer":"PEC Safety",
       "title":"Tech Support Supervisor",
       "location":"Mandeville, LA",
-      "dates":"2014-Current",
-      "description": "Wrote and supervised the production of multiple training manuals for Technical Support Department (Tier 1) in order to ensure internal efficiency and accuracy in data management and customer service. Professionally and patiently trained over 650 contractors to use PEC databases and software applications in order to comply with operator-specific requirements. Provided 24x7 support for a software program which managed personnel hours for over 30 oil processing facilities for BHP Billiton.",
+      "dates":"2014-Present",
+      "description": "Expanded department responsibilities to include system administration, 3 new software applications, and interdepartmental projects, increasing departmental productivity by 50%. Directed and performed system administration to create and modify web content in order to achieve data collection goals of over 40 major clients across over 8,000 contractors. Wrote and maintained 8 system training manuals and 17 standards of operation. Trained and coordinated a team of three technical support representatives to train over 12,000 external users across 7 software applications, maintaining 95% customer satisfaction ratings.",
       "url": "http://pecsafety.com/"
     },
     {
@@ -88,7 +101,7 @@ var work = {
       "title":"Director of Education",
       "location":"San Antonio, TX",
       "dates":"2012-2013",
-      "description":"Balanced institutional effectiveness and flexibility by designing an annual volunteer schedule then recruiting, training, and managing over 45 volunteers for multiple programs and events. Developed, wrote, and managed multiple programs which individually involved up to 150 people. Gathered and analyzed feedback from over 100 individuals and surveys in order to alter programming so as to address evolving objectives. Taught culturally appropriate history, ethics, and theology lessons to and handled crises involving numerous clients ranging in age from 5 to 22 years old.",
+      "description":"Planned, wrote, and managed multiple education-related programs and events which individually involved up to 150 participants.	Recruited, trained, and managed over 45 volunteers for multiple programs and events, proportionately distributed workloads and catered to multiple scheduling conflicts. Gathered and analyzed feedback from over 100 individuals and surveys in order to alter programs so as to address evolving objectives. Taught history, ethics, and theology lessons to and handled crises for students ranging in age from 5 to 22 years old.",
       "url": "http://clcah.org/"
     }
   ],
@@ -115,7 +128,7 @@ var education = {
       "name":"Boston College",
       "location":"Chestnut Hill, MA",
       "degree":"M.Ed.",
-      "majors":["Education"],
+      "majors":["Education - GPA: 3.73"],
       "dates":"2010-2012",
       "url":"http://www.bc.edu/"
     },
@@ -123,7 +136,7 @@ var education = {
       "name":"Baylor University",
       "location":"Waco, TX",
       "degree":"BA, cum laude",
-      "majors":["Religious Studies"],
+      "majors":["Religious Studies - GPA: 3.79"],
       "dates":"2005-2009",
       "url":"http://www.baylor.edu/"
     }
@@ -145,8 +158,8 @@ var education = {
     {
       "title":"Front-End Web Developer Nanodegree",
       "school":"Udacity",
-      "focus":"JavaScript",
-      "dates":"2016-2017",
+      "focus":"Javascript",
+      "dates":"2017-Present",
       "url":"https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
     }
   ],
